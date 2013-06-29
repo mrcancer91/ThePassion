@@ -17,3 +17,5 @@ Mentor:
 
 
 Thông tin https://gist.github.com/jcisio/5574490
+
+Mailing list https://groups.google.com/forum/#!msg/the_passion_mhst
