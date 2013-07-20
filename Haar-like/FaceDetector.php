@@ -27,6 +27,9 @@ class FaceDetector
 	private $height;
 	private $foundRects;
 	
+	private $tmpImg;
+	private $ratio;
+	
 	/**
 	 * Constructor
 	 * @param string Path to classifier file, otherwise default classifier will be used
@@ -101,6 +104,9 @@ class FaceDetector
 		{
 			throw new Exception("Unknown Fileformat: ".$imageType.", ".$imageFile);
 		}
+		
+		//Resize before process
+		$this->resize();
 
 		$this->foundRects = array();
 		
@@ -175,14 +181,18 @@ class FaceDetector
 		$faces = $this->merge($this->foundRects, 2 + intval($moreConfidence));
 		foreach($faces as $face)
 		{
-			$color = imagecolorallocate($this->image, 255, 0, 0);
-			imageline($this->image, $face['x'], $face['y'], ($face['x'] + $face['width']), $face['y'], $color);
-			imageline($this->image, ($face['x'] + $face['width']), $face['y'], ($face['x'] + $face['width']), ($face['y'] + $face['height']), $color);
-			imageline($this->image, ($face['x'] + $face['width']), ($face['y'] + $face['height']), $face['x'], ($face['y'] + $face['height']), $color);
-			imageline($this->image, $face['x'], $face['y'], $face['x'], ($face['y'] + $face['height']), $color);
+			$color = imagecolorallocate($this->tmpImg, 255, 0, 0);
+			$face_x = $face['x']*$this->ratio;
+			$face_y = $face['y']*$this->ratio;
+			$face_width = $face['width']*$this->ratio;
+			$face_height = $face['height']*$this->ratio;
+			imageline($this->tmpImg, $face_x, $face_y, ($face_x + $face_width), $face_y, $color);
+			imageline($this->tmpImg, ($face_x + $face_width), $face_y, ($face_x + $face_width), ($face_y + $face_height), $color);
+			imageline($this->tmpImg, ($face_x + $face_width), ($face_y + $face_height), $face_x, ($face_y + $face_height), $color);
+			imageline($this->tmpImg, $face_x, $face_y, $face_x, ($face_y + $face_height), $color);
 		}
 		//return $this->merge($this->foundRects, 2 + intval($moreConfidence));
-		return $this->image;
+		return $this->tmpImg;
 	}	
 	
 	/**
@@ -326,6 +336,28 @@ class FaceDetector
 		
 		return false;
 	}	
+	
+	/**
+	 *	resize a image
+	 */
+	private function resize(){
+		$this->ratio = 1;
+		if($this->width*$this->height >140000){
+			$this->ratio = ceil(sqrt(($this->width*$this->height)/140000));
+			$newWidth = round($this->width/$this->ratio);
+			$newHeight = round($this->height/$this->ratio);
+			$image_p = imagecreatetruecolor($newWidth, $newHeight);
+			imagecopyresampled($image_p, $this->image, 0, 0, 0, 0, $newWidth, $newHeight, $this->width, $this->height);
+			$this->width = $newWidth;
+			$this->height = $newHeight;
+			$this->tmpImg = $this->image;
+			$this->image = $image_p;
+		}
+		else
+			$this->tmpImg = $this->image;
+		
+	}
+	
 }
 
 class Rect
