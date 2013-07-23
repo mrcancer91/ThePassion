@@ -18,7 +18,8 @@ ini_set( "memory_limit", "200M" );
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-class FaceDetector
+include("FaceDetection.php");
+class FaceDetector implements FaceDetection
 {
 	private $classifierSize;
 	private $stages;
@@ -77,35 +78,54 @@ class FaceDetector
 	 * @param string path of image file
 	 * @throws Exception
 	 */	
-	public function scan($imageFile)
+	 
+	
+	public function scanImage($imageFile)
 	{
 		$imageInfo = getimagesize($imageFile);
+		$image = null;
 		if(!$imageInfo)
 		{
 			echo("Could not open file: ".$imageFile);
 			throw new Exception("Could not open file: ".$imageFile);
 		}
+		
 		$this->width = $imageInfo[0];
 		$this->height = $imageInfo[1];
 		$imageType = $imageInfo[2];
+		
 		if( $imageType == IMAGETYPE_JPEG )
 		{
-			$this->image = imagecreatefromjpeg($imageFile);
+			$image = imagecreatefromjpeg($imageFile);
 		}
 		elseif( $imageType == IMAGETYPE_GIF )
 		{
-			$this->image = imagecreatefromgif($imageFile);
+			$image = imagecreatefromgif($imageFile);
 		}
 		elseif( $imageType == IMAGETYPE_PNG )
 		{
-			$this->image = imagecreatefrompng($imageFile);
+			$image = imagecreatefrompng($imageFile);
 		}
 		else
 		{
 			throw new Exception("Unknown Fileformat: ".$imageType.", ".$imageFile);
 		}
 		
-		//Resize before process
+		return $image;
+	}
+	
+	
+	/**
+	 * Returnes array of found faces. 
+	 *
+	 * Each face is represented by an associative array with the keys x, y, width and hight. 
+	 * 
+	 * @param bool desire more confidence what a face is, gives less results
+	 * @return array found faces
+	 */	
+	public function faceDetec($image)
+	{
+		$this->image = $image;
 		$this->resize();
 
 		$this->foundRects = array();
@@ -166,91 +186,33 @@ class FaceDetector
 				}
 			}
 		}
+		
+		
+		return $this->merge($this->foundRects, 2 + intval(false));
+		
 	}
-
-	/**
-	 * Returnes array of found faces. 
-	 *
-	 * Each face is represented by an associative array with the keys x, y, width and hight. 
-	 * 
-	 * @param bool desire more confidence what a face is, gives less results
-	 * @return array found faces
-	 */	
-	public function getFaces($moreConfidence = false)
+	
+	public function getImage($faces, $image)
 	{
-		$faces = $this->merge($this->foundRects, 2 + intval($moreConfidence));
 		foreach($faces as $face)
 		{
-			$color = imagecolorallocate($this->tmpImg, 255, 0, 0);
-			$face_x = $face['x']*$this->ratio;
-			$face_y = $face['y']*$this->ratio;
-			$face_width = $face['width']*$this->ratio;
-			$face_height = $face['height']*$this->ratio;
-			imageline($this->tmpImg, $face_x, $face_y, ($face_x + $face_width), $face_y, $color);
-			imageline($this->tmpImg, ($face_x + $face_width), $face_y, ($face_x + $face_width), ($face_y + $face_height), $color);
-			imageline($this->tmpImg, ($face_x + $face_width), ($face_y + $face_height), $face_x, ($face_y + $face_height), $color);
-			imageline($this->tmpImg, $face_x, $face_y, $face_x, ($face_y + $face_height), $color);
-		}
-		//return $this->merge($this->foundRects, 2 + intval($moreConfidence));
-		return $this->tmpImg;
-	}	
-	
-	/**
-	 * Gives access to image with found faces marked
-	 * 
-	 * @param string filename to save on disk
-	 * @param bool desire more confidence what a face is, gives less results
-	 * @param bool mark all faces before merging, for debugging purposes
-	 * @return bool|resource if filename given, image will be saved to disk, otherwise image ressource
-	 * @throws Exception
-	 */		
-	public function getImage($fileName = null, $moreConfidence = false, $showAllRects = false)
-	{
-		$canvas = imagecreatetruecolor($this->width, $this->height);
-		imagecopyresampled($canvas, $this->image, 0, 0, 0, 0, $this->width, $this->height, $this->width, $this->height);
-				
-		$blue = imagecolorallocate($canvas, 0, 0, 255);
-		$red = imagecolorallocate($canvas, 255, 0, 0);
-		
-		if($showAllRects)
-		{
-			foreach($this->foundRects as $r)
-			{
-				imagerectangle( $canvas, $r['x'], $r['y']  , $r['x']+$r['width']  , $r['y']+$r['height'], $blue);
-			}
+			$color = imagecolorallocate($image, 255, 0, 0);
+			$face_x = $face['x'];
+			$face_y = $face['y'];
+			$face_width = $face['width'];
+			$face_height = $face['height'];
+			imageline($image, $face_x, $face_y, ($face_x + $face_width), $face_y, $color);
+			imageline($image, ($face_x + $face_width), $face_y, ($face_x + $face_width), ($face_y + $face_height), $color);
+			imageline($image, ($face_x + $face_width), ($face_y + $face_height), $face_x, ($face_y + $face_height), $color);
+			imageline($image, $face_x, $face_y, $face_x, ($face_y + $face_height), $color);
 		}
 		
-		$rects = $this->merge($this->foundRects, 2 + intval($moreConfidence));
-		foreach($rects as $r)
-		{
-			imagerectangle( $canvas, $r['x'], $r['y']  , $r['x']+$r['width']  , $r['y']+$r['height'], $red);
-		}
-		
-		if(empty($fileName))
-		{
-			return $canvas;
-		}
-		
-		$ext = strtolower(array_pop(explode('.', $fileName)));
-		
-		if( $ext == "jpg" )
-		{
-			return imagejpeg($canvas, $fileName, 100);
-		}
-		elseif( $ext == "gif" )
-		{
-			return imagegif($canvas, $fileName);         
-		}
-		elseif( $ext == "png")
-		{
-			return imagepng($canvas, $fileName);
-		}
-		else
-		{
-			throw new Exception("Unknown Fileformat: ".$ext);
-		}
-		
+		return $image;
 	}
+	 
+
+	
+	
 	
 	private function merge($rects, $min_neighbors)
 	{
@@ -301,10 +263,10 @@ class FaceDetector
 			if( $n >= $min_neighbors)
 			{
 				$r = array("x" => 0, "y" => 0, "width" => 0, "height" => 0);
-				$r['x'] = ($rect[$i]['x']*2 + $n)/(2*$n);
-				$r['y'] = ($rect[$i]['y']*2 + $n)/(2*$n);
-				$r['width'] = ($rect[$i]['width']*2 + $n)/(2*$n);
-				$r['height'] = ($rect[$i]['height']*2 + $n)/(2*$n);
+				$r['x'] = round(($rect[$i]['x']*2 + $n)/(2*$n)*$this->ratio);
+				$r['y'] = round(($rect[$i]['y']*2 + $n)/(2*$n)*$this->ratio);
+				$r['width'] = round((($rect[$i]['width']*2 + $n)/(2*$n))*$this->ratio);
+				$r['height'] = round((($rect[$i]['height']*2 + $n)/(2*$n))*$this->ratio);
 				
 				$retour[] = $r;
 			}
