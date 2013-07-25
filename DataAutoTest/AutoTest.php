@@ -4,12 +4,13 @@
 	function getImage( $foldername ){
 		$file = array();
 		$dir = opendir( $foldername );
-		while( $r = readdir( $dir ) {
-			if( eregi( "\.jpg", $r )
+		while( $r = readdir( $dir )) {
+			if( eregi( "\.jpg", $r ))
 				array_push( $file, $r );
 		}
 		return $file;
 	}
+	
 	//
 	include("FaceDetector.php");
 	
@@ -17,8 +18,7 @@
 	function test( $file )
 	{
 		$xmldoc = new DOMDocument();
-		$xmldoc->load( "ResultFile.xml");
-		$root = $xmldoc->getElementsByTagName( "Result" );
+		$xmldoc->load( 'ResultFile.xml' );
 		
 		foreach( $file as $f)
 		{
@@ -28,7 +28,7 @@
 			
 			$timeStart = microtime( true );
 			// Face Detect program
-			$faces = $detector->faceDetec();
+			$faces = $detector->faceDetec( $image );
 			//
 			$timeEnd = microtime( true );
 			
@@ -36,7 +36,7 @@
 			foreach( $faces as $face) $count++;
 			
 			// write
-			$e = $xmldoc->createElement( "Image" );
+			$e = $xmldoc->createElement( 'Image' );
 			$a1 = $xmldoc->createAttribute( 'NameID' );
 			$a1->value = $f;
 			$e->appendChild( $a1 );
@@ -44,13 +44,13 @@
 			$a2->value = percent( $f, $size[0], $size[1], $faces, $count );
 			$e->appendChild( $a2 );
 			$a3 = $xmldoc->createAttribute( 'TimeProcess' );
-			$a3->value = ( $timeEnd - $timeStart)*1000 );
-			$e->appendChild( $a3 ;
+			$a3->value = ( $timeEnd - $timeStart)*1000 ;
+			$e->appendChild( $a3 );
 			
-			$r->appendChild( $e );
 			
-			$xmldoc->saveXML();
+			$xmldoc->appendChild( $e );
 		}
+		$xmldoc->save( 'ResultFile.xml' );
 	}
 	// return: The percentage of correct detection
 	function percent($idImage, $widthImage, $heightImage, $listface, $numberface)
@@ -59,15 +59,13 @@
 		$xmlDoc->load( 'FileData.xml' );
 		
 		$images = $xmlDoc->getElementsByTagName( 'Image' );
-		
+		$count = 0; $countTrue = 0.0;
 		foreach( $images as $image )
 		{
-			$id = $image->getAttribute( 'ID' );
-			
+			$id = $image->getAttribute( 'NameID' );
 			if( $id == $idImage )
 			{
 				$faces = $image->getElementsByTagName( 'face' );
-				$count = 0; $countTrue = 0.0;
 				foreach( $faces as $face )
 				{
 					$xData = $face->getElementsByTagName( 'x' )->item(0)->nodeValue;
@@ -100,8 +98,14 @@
 			}
 		}
 		
-		$per = ($countTrue / $count * 100);
+		
+		if( $count != 0 )
+			$per = ($countTrue / $count * 100);
+		else if( $countTrue == 0 ) $per = 100;
+		else $per = 0;
 		return $per;
 	}
 
+	$listfile = getImage( PATH );
+	test( $listfile );
 ?>
