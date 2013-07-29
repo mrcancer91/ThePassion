@@ -56,7 +56,7 @@ class LBP {
     public function LBP($inputImage) {
         $r = 3;
 
-        $MAT = array_fill(0, $this->height, array_fill(0, $this->width, null));
+        $MAT = array_fill(0, $this->width, array_fill(0, $this->height, null));
         $Max = 0;
 
         for ($i = 0; $i < $this->height; $i++) {
