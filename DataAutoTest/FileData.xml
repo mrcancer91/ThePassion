@@ -198,122 +198,122 @@
   </Image>
   <Image NameID="Anh (16).jpg" facenumber="1">
     <face>
-      <x>229</x>
-      <y>176</y>
-      <width>397</width>
-      <height>384</height>
+      <x>186</x>
+      <y>138</y>
+      <width>250</width>
+      <height>250</height>
     </face>
   </Image>
   <Image NameID="Anh (17).jpg" facenumber="1">
     <face>
-      <x>226</x>
-      <y>173</y>
-      <width>396</width>
-      <height>387</height>
+      <x>181</x>
+      <y>140</y>
+      <width>260</width>
+      <height>260</height>
     </face>
   </Image>
   <Image NameID="Anh (18).jpg" facenumber="1">
     <face>
-      <x>246</x>
-      <y>169</y>
-      <width>409</width>
-      <height>373</height>
+      <x>195</x>
+      <y>143</y>
+      <width>214</width>
+      <height>214</height>
     </face>
   </Image>
   <Image NameID="Anh (19).jpg" facenumber="1">
     <face>
-      <x>289</x>
-      <y>174</y>
-      <width>455</width>
-      <height>381</height>
+      <x>290</x>
+      <y>137</y>
+      <width>226</width>
+      <height>226</height>
     </face>
   </Image>
   <Image NameID="Anh (20).jpg" facenumber="1">
     <face>
-      <x>243</x>
-      <y>163</y>
-      <width>413</width>
-      <height>362</height>
+      <x>216</x>
+      <y>130</y>
+      <width>222</width>
+      <height>222</height>
     </face>
   </Image>
   <Image NameID="Anh (21).jpg" facenumber="1">
     <face>
-      <x>204</x>
-      <y>172</y>
-      <width>381</width>
-      <height>386</height>
+      <x>152</x>
+      <y>137</y>
+      <width>224</width>
+      <height>224</height>
     </face>
   </Image>
   <Image NameID="Anh (22).jpg" facenumber="1">
     <face>
-      <x>217</x>
-      <y>161</y>
-      <width>412</width>
-      <height>388</height>
+      <x>185</x>
+      <y>137</y>
+      <width>261</width>
+      <height>261</height>
     </face>
   </Image>
   <Image NameID="Anh (23).jpg" facenumber="1">
     <face>
-      <x>217</x>
-      <y>182</y>
-      <width>401</width>
-      <height>389</height>
+      <x>181</x>
+      <y>131</y>
+      <width>262</width>
+      <height>262</height>
     </face>
   </Image>
   <Image NameID="Anh (24).jpg" facenumber="1">
     <face>
-      <x>207</x>
-      <y>164</y>
-      <width>385</width>
-      <height>359</height>
+      <x>145</x>
+      <y>117</y>
+      <width>242</width>
+      <height>242</height>
     </face>
   </Image>
   <Image NameID="Anh (25).jpg" facenumber="1">
     <face>
-      <x>250</x>
-      <y>176</y>
-      <width>435</width>
-      <height>388</height>
+      <x>258</x>
+      <y>151</y>
+      <width>232</width>
+      <height>232</height>
     </face>
   </Image>
   <Image NameID="Anh (26).jpg" facenumber="1">
     <face>
-      <x>213</x>
-      <y>191</y>
-      <width>416</width>
-      <height>384</height>
+      <x>189</x>
+      <y>141</y>
+      <width>251</width>
+      <height>251</height>
     </face>
   </Image>
   <Image NameID="Anh (27).jpg" facenumber="1">
     <face>
-      <x>215</x>
-      <y>181</y>
-      <width>400</width>
-      <height>378</height>
+      <x>184</x>
+      <y>132</y>
+      <width>247</width>
+      <height>247</height>
     </face>
   </Image>
   <Image NameID="Anh (28).jpg" facenumber="1">
     <face>
-      <x>84</x>
-      <y>74</y>
-      <width>184</width>
-      <height>183</height>
+      <x>73</x>
+      <y>62</y>
+      <width>120</width>
+      <height>120</height>
     </face>
   </Image>
   <Image NameID="Anh (29).jpg" facenumber="1">
     <face>
-      <x>108</x>
-      <y>77</y>
-      <width>195</width>
-      <height>184</height>
+      <x>96</x>
+      <y>63</y>
+      <width>115</width>
+      <height>115</height>
     </face>
   </Image>
   <Image NameID="Anh (30).jpg" facenumber="1">
     <face>
-      <x>66</x>
-      <y>77</y>
-      <width>177</width>
-      <height>180</height>
+      <x>56</x>
+      <y>61</y>
+      <width>125</width>
+      <height>125</height>
     </face>
   </Image>
   <Image NameID="Anh (31).jpg" facenumber="1">
@@ -326,13 +326,13 @@
   </Image>
   <Image NameID="Anh (32).jpg" facenumber="1">
     <face>
-      <x>49</x>
-      <y>80</y>
-      <width>141</width>
-      <height>181</height>
+      <x>31</x>
+      <y>64</y>
+      <width>116</width>
+      <height>116</height>
     </face>
   </Image>
-  <Image NameID="Anh (33).jpg" facenumber="1">
+ <Image NameID="Anh (33).jpg" facenumber="1">
     <face>
       <x>157</x>
       <y>77</y>
@@ -366,50 +366,50 @@
   </Image>
   <Image NameID="Anh (37).jpg" facenumber="1">
     <face>
-      <x>87</x>
-      <y>84</y>
-      <width>213</width>
-      <height>217</height>
+      <x>69</x>
+      <y>57</y>
+      <width>158</width>
+      <height>158</height>
     </face>
   </Image>
   <Image NameID="Anh (38).jpg" facenumber="1">
     <face>
-      <x>87</x>
-      <y>63</y>
-      <width>168</width>
-      <height>169</height>
+      <x>70</x>
+      <y>59</y>
+      <width>111</width>
+      <height>111</height>
     </face>
   </Image>
   <Image NameID="Anh (39).jpg" facenumber="1">
     <face>
-      <x>66</x>
-      <y>81</y>
-      <width>153</width>
-      <height>182</height>
+      <x>48</x>
+      <y>69</y>
+      <width>108</width>
+      <height>108</height>
     </face>
   </Image>
   <Image NameID="Anh (40).jpg" facenumber="1">
     <face>
-      <x>103</x>
-      <y>73</y>
-      <width>189</width>
-      <height>179</height>
+      <x>96</x>
+      <y>66</y>
+      <width>111</width>
+      <height>111</height>
     </face>
   </Image>
   <Image NameID="Anh (41).jpg" facenumber="1">
     <face>
-      <x>56</x>
-      <y>87</y>
-      <width>138</width>
-      <height>180</height>
+      <x>37</x>
+      <y>69</y>
+      <width>104</width>
+      <height>104</height>
     </face>
   </Image>
   <Image NameID="Anh (42).jpg" facenumber="1">
     <face>
-      <x>101</x>
-      <y>80</y>
-      <width>189</width>
-      <height>180</height>
+      <x>97</x>
+      <y>69</y>
+      <width>106</width>
+      <height>106</height>
     </face>
   </Image>
   <Image NameID="Anh (43).jpg" facenumber="1">
@@ -444,7 +444,7 @@
       <height>192</height>
     </face>
   </Image>
-  <Image NameID="Anh (47).jpg" facenumber="1">
+    <Image NameID="Anh (47).jpg" facenumber="1">
     <face>
       <x>12</x>
       <y>78</y>
@@ -454,26 +454,26 @@
   </Image>
   <Image NameID="Anh (48).jpg" facenumber="1">
     <face>
-      <x>79</x>
-      <y>68</y>
-      <width>175</width>
-      <height>175</height>
+      <x>67</x>
+      <y>57</y>
+      <width>125</width>
+      <height>125</height>
     </face>
   </Image>
   <Image NameID="Anh (49).jpg" facenumber="1">
     <face>
-      <x>104</x>
-      <y>69</y>
-      <width>185</width>
-      <height>181</height>
+      <x>96</x>
+      <y>62</y>
+      <width>112</width>
+      <height>112</height>
     </face>
   </Image>
   <Image NameID="Anh (50).jpg" facenumber="1">
     <face>
-      <x>55</x>
-      <y>75</y>
-      <width>154</width>
-      <height>187</height>
+      <x>40</x>
+      <y>64</y>
+      <width>121</width>
+      <height>121</height>
     </face>
   </Image>
   <Image NameID="Anh (51).jpg" facenumber="1">
@@ -486,10 +486,10 @@
   </Image>
   <Image NameID="Anh (52).jpg" facenumber="1">
     <face>
-      <x>44</x>
-      <y>70</y>
-      <width>133</width>
-      <height>184</height>
+      <x>16</x>
+      <y>57</y>
+      <width>119</width>
+      <height>119</height>
     </face>
   </Image>
   <Image NameID="Anh (53).jpg" facenumber="1">
@@ -526,34 +526,34 @@
   </Image>
   <Image NameID="Anh (57).jpg" facenumber="1">
     <face>
-      <x>59</x>
-      <y>51</y>
-      <width>183</width>
-      <height>196</height>
+      <x>48</x>
+      <y>46</y>
+      <width>157</width>
+      <height>157</height>
     </face>
   </Image>
   <Image NameID="Anh (58).jpg" facenumber="1">
     <face>
-      <x>65</x>
-      <y>54</y>
-      <width>194</width>
-      <height>183</height>
+      <x>57</x>
+      <y>38</y>
+      <width>158</width>
+      <height>158</height>
     </face>
   </Image>
   <Image NameID="Anh (59).jpg" facenumber="1">
     <face>
-      <x>93</x>
-      <y>63</y>
-      <width>205</width>
-      <height>191</height>
+      <x>83</x>
+      <y>47</y>
+      <width>146</width>
+      <height>146</height>
     </face>
   </Image>
   <Image NameID="Anh (60).jpg" facenumber="1">
     <face>
-      <x>40</x>
-      <y>60</y>
-      <width>185</width>
-      <height>196</height>
+      <x>22</x>
+      <y>44</y>
+      <width>163</width>
+      <height>163</height>
     </face>
   </Image>
   <Image NameID="Anh (61).jpg" facenumber="1">
@@ -606,34 +606,34 @@
   </Image>
   <Image NameID="Anh (67).jpg" facenumber="1">
     <face>
-      <x>59</x>
-      <y>54</y>
-      <width>195</width>
-      <height>183</height>
+      <x>55</x>
+      <y>39</y>
+      <width>165</width>
+      <height>165</height>
     </face>
   </Image>
   <Image NameID="Anh (68).jpg" facenumber="1">
     <face>
-      <x>60</x>
-      <y>56</y>
-      <width>172</width>
-      <height>176</height>
+      <x>52</x>
+      <y>45</y>
+      <width>133</width>
+      <height>133</height>
     </face>
   </Image>
   <Image NameID="Anh (69).jpg" facenumber="1">
     <face>
-      <x>86</x>
-      <y>53</y>
-      <width>188</width>
-      <height>177</height>
+      <x>80</x>
+      <y>48</y>
+      <width>134</width>
+      <height>134</height>
     </face>
   </Image>
   <Image NameID="Anh (70).jpg" facenumber="1">
     <face>
-      <x>56</x>
-      <y>64</y>
-      <width>160</width>
-      <height>188</height>
+      <x>35</x>
+      <y>56</y>
+      <width>134</width>
+      <height>134</height>
     </face>
   </Image>
   <Image NameID="Anh (71).jpg" facenumber="1">
@@ -686,10 +686,10 @@
   </Image>
   <Image NameID="Anh (77).jpg" facenumber="1">
     <face>
-      <x>82</x>
-      <y>49</y>
-      <width>208</width>
-      <height>206</height>
+      <x>76</x>
+      <y>51</y>
+      <width>153</width>
+      <height>153</height>
     </face>
   </Image>
 </FaceDetection>
